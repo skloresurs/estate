@@ -25,7 +25,6 @@
     "plugin:xss/recommended",
     // UI and css
     "plugin:tailwindcss/recommended",
-    "mantine",
     // Browser Compability
     "plugin:compat/recommended",
     // Others
@@ -104,17 +103,11 @@
       }
     ],
     // lodash
-    "lodash/import-scope": [
-      2,
-      "member"
-    ],
+    "lodash/import-scope": [2, "member"],
     "lodash/prefer-lodash-method": [
       2,
       {
-        "ignoreObjects": [
-          "router",
-          "window.location"
-        ]
+        "ignoreObjects": ["router", "window.location"]
       }
     ],
     // zod
@@ -124,9 +117,7 @@
     "drizzle/enforce-delete-with-where": [
       "error",
       {
-        "drizzleObjectName": [
-          "db"
-        ]
+        "drizzleObjectName": ["db"]
       }
     ],
     // The following rules are disabled due to them being considered unduly restrictive or unhelpful.
