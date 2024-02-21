@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import Container from '@/components/Container';
 import PageTransition from '@/components/PageTransition';
@@ -13,10 +13,12 @@ export default function Properties() {
       <div>
         <PropertiesHeader />
         <Container className='-mt-10 space-y-8'>
-          <div>
-            <Search />
-            <Fitlers />
-          </div>
+          <Suspense>
+            <div>
+              <Search />
+              <Fitlers />
+            </div>
+          </Suspense>
         </Container>
       </div>
       <Gallery />
