@@ -11,6 +11,7 @@ import { twMerge } from 'tailwind-merge';
 import ContactUs from '@/components/contact-us/ContactUs';
 import Footer from '@/components/footer/Footer';
 import Navbar from '@/components/navbar/Navbar';
+import { Toaster } from '@/components/ui/sonner';
 
 const raleway = Raleway({ subsets: ['cyrillic-ext'] });
 const ScrollToTop = dynamic(() => import('@/components/ScrollToTop'), { ssr: false });
@@ -33,6 +34,7 @@ export default function RootLayout({
           'max-w-full overflow-x-hidden scrollbar-thin scrollbar-thumb-primary/50 min-h-[100dvh]'
         )}
       >
+        <Toaster position='top-right' expand richColors closeButton />
         <GlowCapture className='flex min-h-[100dvh] max-w-full flex-col overflow-x-hidden scrollbar-thin scrollbar-thumb-primary/50'>
           <ScrollToTop />
           <Navbar />
