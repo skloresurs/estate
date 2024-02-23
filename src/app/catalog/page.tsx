@@ -1,13 +1,13 @@
 import React, { Suspense } from 'react';
 
+import Fitlers from '@/components/catalog/Fitlers';
+import Gallery from '@/components/catalog/Gallery';
+import PropertiesHeader from '@/components/catalog/Header';
+import Search from '@/components/catalog/Search';
 import Container from '@/components/Container';
 import PageTransition from '@/components/PageTransition';
-import Fitlers from '@/components/properties/Fitlers';
-import Gallery from '@/components/properties/Gallery';
-import PropertiesHeader from '@/components/properties/Header';
-import Search from '@/components/properties/Search';
 
-export default function Properties() {
+export default function Catalog() {
   return (
     <PageTransition className='space-y-12'>
       <div>
@@ -21,7 +21,9 @@ export default function Properties() {
           </Suspense>
         </Container>
       </div>
-      <Gallery />
+      <Suspense>
+        <Gallery />
+      </Suspense>
     </PageTransition>
   );
 }

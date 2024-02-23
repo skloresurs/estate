@@ -1,50 +1,53 @@
 'use client';
 
 import { Glow } from '@codaworks/react-glow';
-import { Bath, BedDouble, Box, ChevronRight } from 'lucide-react';
+import { BedDouble, Box, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { twMerge } from 'tailwind-merge';
 
+import moneyFormat from '@/libs/text-formats';
+import ICatalogItem from '@/types/CatalogItem';
+
+import Animation from '../Animation';
 import { buttonVariants } from '../ui/button';
-import Tag from './Tag';
 import TagWithIcon from './TagWithIcon';
 
 interface IProps {
   className?: string;
-  delay?: number;
+  item: ICatalogItem;
 }
 
-export default function HomeCard({ className, delay }: IProps) {
+export default function HomeCard({ className, item }: IProps) {
   return (
-    <AnimationOnScroll animateIn='animate__slideInUp' animateOnce delay={delay ?? 0}>
+    <Animation animateIn='animate__slideInUp' offset={600} animateOnce animatePreScroll>
       <Glow>
         <div className={twMerge('glow overflow-hidden rounded-md border-2', className)}>
           <Image src='/demo-card.jpg' alt='demo-card' width={360} height={270} className='aspect-video w-full' />
           <div className='space-y-4 px-6 py-4'>
-            <h2>Lorem Ipsum</h2>
-            <span className='small'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-            <div className='flex flex-wrap gap-1'>
-              <Tag />
-              <Tag />
-              <Tag />
-            </div>
+            <h2>{item.title}</h2>
+            <span className='small'>{item.shortDescription}</span>
             <div className='flex flex-wrap gap-6 gap-y-2'>
-              <TagWithIcon icon={<BedDouble />} description='Beds: 2' />
-              <TagWithIcon icon={<Bath />} description='Bathrooms: 2' />
-              <TagWithIcon icon={<Box />} description='Area: 200 m³' />
+              <TagWithIcon icon={<BedDouble />} description={`Bedrooms: ${item.bedrooms}`} />
+              <TagWithIcon icon={<Box />} description={`Area: ${item.area} m³`} />
             </div>
             <div className='flex flex-row items-center justify-between gap-2'>
-              <p className='text-xl font-bold md:text-2xl lg:text-3xl'>2 000 000 ₴</p>
-              <Link className={buttonVariants({ variant: 'ghost', size: 'icon' })} href='/'>
+              <div className='flex flex-col gap-0'>
+                {item.salePrice && <span className='small font-bold line-through'>{moneyFormat(item.price)}</span>}
+                <span
+                  className={twMerge('text-xl font-bold md:text-2xl lg:text-3xl', item.salePrice ? 'text-red-500' : '')}
+                >
+                  {moneyFormat(item.salePrice ?? item.price)}
+                </span>
+              </div>
+              <Link className={buttonVariants({ variant: 'shine', size: 'icon' })} href={`/catalog/${item.id}`}>
                 <ChevronRight />
               </Link>
             </div>
           </div>
         </div>
       </Glow>
-    </AnimationOnScroll>
+    </Animation>
   );
 }

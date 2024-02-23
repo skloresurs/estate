@@ -1,9 +1,11 @@
 'use client';
 
+import Link from 'next/link';
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
 import Stars from './Stars';
-import { Button } from './ui/button';
+import { Button, buttonVariants } from './ui/button';
 
 interface IProps {
   title: string;
@@ -12,6 +14,7 @@ interface IProps {
   button?: {
     label: string;
     onClick?: () => void;
+    href?: string;
   };
 }
 
@@ -24,10 +27,15 @@ export default function ComponentHeader({ title, description, disableStars, butt
           <h2>{title}</h2>
           <p className='text-muted-foreground'>{description}</p>
         </div>
-        {button && (
+        {button && !button.href && (
           <Button variant='outline' className='w-full md:w-auto'>
             {button.label}
           </Button>
+        )}
+        {button && button.href && (
+          <Link href={button.href} className={twMerge(buttonVariants({ variant: 'gooeyLeft' }), 'w-full md:w-auto')}>
+            {button.label}
+          </Link>
         )}
       </div>
     </>

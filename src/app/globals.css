@@ -117,3 +117,7 @@ code {
 .review:not(.is-snapped) {
   @apply opacity-30;
 }
+
+.grecaptcha-badge {
+  visibility: hidden !important;
+}

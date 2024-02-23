@@ -1,11 +1,15 @@
-import withPWAInit from '@ducanh2912/next-pwa'
-
+import './src/env.mjs';
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    minimumCacheTTL: 60,
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+      },
+    ],
+  },
+};
 
-const withPWA = withPWAInit({
-  dest: 'public',
-  disable: process.env.NODE_ENV === 'development',
-})
-
-export default withPWA(nextConfig)
+export default nextConfig;

@@ -61,7 +61,7 @@ function PaginationPrevious({ className, ...props }: React.ComponentProps<typeof
       {...props}
     >
       <ChevronLeft className='size-4' />
-      <span>Previous</span>
+      <span>Попередня</span>
     </PaginationLink>
   );
 }

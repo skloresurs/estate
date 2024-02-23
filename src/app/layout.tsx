@@ -5,6 +5,7 @@ import { GlowCapture } from '@codaworks/react-glow';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Raleway } from 'next/font/google';
+import { ReCaptchaProvider } from 'next-recaptcha-v3';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
@@ -34,14 +35,16 @@ export default function RootLayout({
           'max-w-full overflow-x-hidden scrollbar-thin scrollbar-thumb-primary/50 min-h-[100dvh]'
         )}
       >
-        <Toaster position='top-right' expand richColors closeButton />
-        <GlowCapture className='flex min-h-[100dvh] max-w-full flex-col overflow-x-hidden scrollbar-thin scrollbar-thumb-primary/50'>
-          <ScrollToTop />
-          <Navbar />
-          <div className='flex-1'>{children}</div>
-          <ContactUs />
-          <Footer />
-        </GlowCapture>
+        <ReCaptchaProvider>
+          <Toaster position='top-right' expand richColors closeButton />
+          <GlowCapture className='flex min-h-[100dvh] max-w-full flex-col overflow-x-hidden scrollbar-thin scrollbar-thumb-primary/50'>
+            <ScrollToTop />
+            <Navbar />
+            <div className='flex-1'>{children}</div>
+            <ContactUs />
+            <Footer />
+          </GlowCapture>
+        </ReCaptchaProvider>
       </body>
     </html>
   );

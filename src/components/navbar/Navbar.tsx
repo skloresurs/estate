@@ -17,8 +17,8 @@ const menu: MenuItem[] = [
     href: '/about-us',
   },
   {
-    label: 'Варіанти',
-    href: '/properties',
+    label: 'Каталог',
+    href: '/catalog',
   },
 ];
 
