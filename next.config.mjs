@@ -5,8 +5,8 @@ const nextConfig = {
     minimumCacheTTL: 60,
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '127.0.0.1',
+        protocol: 'https',
+        hostname: '*.skloresurs.com',
       },
     ],
   },
