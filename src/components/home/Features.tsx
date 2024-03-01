@@ -1,4 +1,4 @@
-import { map } from 'lodash';
+import { constant, map } from 'lodash';
 import React from 'react';
 
 import axiosCMS from '@/libs/strapi-axios';
@@ -13,10 +13,14 @@ export default async function Features() {
     .get<{ data: ICatalogItem[] }>('/catalog-items', {
       params: {
         'pagination[pageSize]': 4,
+        populate: '*',
         random: true,
       },
     })
-    .then((response) => response.data.data);
+    .then((response) => response.data.data)
+    .catch(constant(null));
+
+  if (!data) return null;
   return (
     <Container className='space-y-4'>
       <ComponentHeader

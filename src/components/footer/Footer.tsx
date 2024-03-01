@@ -23,7 +23,7 @@ export default function Footer() {
               Про нас
             </Link>
             <Link href='/catalog' {...linkProps}>
-              Варіанти
+              Каталог
             </Link>
           </div>
         </div>

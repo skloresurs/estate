@@ -18,6 +18,7 @@ export default async function Reviews() {
     })
     .catch(constant(null));
   if (!response) return null;
+
   return (
     <Animation animateIn='animate__backInRight' animateOnce>
       <Container className='space-y-4'>
